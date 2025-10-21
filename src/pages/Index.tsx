@@ -263,13 +263,13 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section id="faq" className="py-16 bg-muted/30">
         <div className="container max-w-3xl">
-          <h2 className="text-3xl font-bold text-center mb-8">Часто задаваемые вопросы</h2>
+          <h2 className="text-4xl font-bold font-heading text-center mb-12">Часто задаваемые вопросы</h2>
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg px-6">
-                <AccordionTrigger className="text-left hover:no-underline">
+              <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg px-6 border-0 shadow-sm">
+                <AccordionTrigger className="text-left font-heading hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
@@ -281,16 +281,38 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container text-center space-y-6">
-          <h2 className="text-3xl font-bold">Готовы забронировать?</h2>
-          <p className="text-lg opacity-90 max-w-2xl mx-auto">
-            Начните планировать свой идеальный отдых прямо сейчас. Тысячи отелей ждут вас!
+      <section id="contact" className="py-16">
+        <div className="container max-w-2xl">
+          <h2 className="text-4xl font-bold font-heading text-center mb-4">Остались вопросы?</h2>
+          <p className="text-center text-muted-foreground mb-8">
+            Свяжитесь с нами, и мы поможем подобрать идеальный вариант
           </p>
-          <Button size="lg" variant="secondary">
-            Найти отель
-            <Icon name="ArrowRight" className="ml-2 h-5 w-5" />
-          </Button>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-heading">Форма обратной связи</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Label htmlFor="contact-name">Ваше имя</Label>
+                <Input id="contact-name" placeholder="Иван Иванов" className="mt-2" />
+              </div>
+              <div>
+                <Label htmlFor="contact-email">Email</Label>
+                <Input id="contact-email" type="email" placeholder="ivan@example.com" className="mt-2" />
+              </div>
+              <div>
+                <Label htmlFor="contact-message">Сообщение</Label>
+                <Input id="contact-message" placeholder="Ваш вопрос..." className="mt-2" />
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full" size="lg">
+                <Icon name="Send" size={18} className="mr-2" />
+                Отправить сообщение
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       </section>
 
