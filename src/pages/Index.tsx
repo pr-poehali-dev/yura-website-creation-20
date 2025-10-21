@@ -22,6 +22,8 @@ const hotels = [
     name: "Grand Hotel Plaza",
     location: "Москва, Центр",
     price: 12500,
+    oldPrice: 18000,
+    discount: 30,
     rating: 4.8,
     reviews: 234,
     image: "https://cdn.poehali.dev/projects/d3d2ebf7-2b8a-4e72-9821-edc1997dc600/files/c7dfaa0f-6c10-4d7e-b8e0-3721d641344f.jpg",
@@ -33,6 +35,8 @@ const hotels = [
     name: "Sky View Resort",
     location: "Сочи, Побережье",
     price: 15000,
+    oldPrice: 22000,
+    discount: 32,
     rating: 4.9,
     reviews: 189,
     image: "https://cdn.poehali.dev/projects/d3d2ebf7-2b8a-4e72-9821-edc1997dc600/files/dd27dfa9-e80f-4343-bb1b-3f671c97e2f9.jpg",
@@ -44,6 +48,8 @@ const hotels = [
     name: "City Business Hotel",
     location: "Санкт-Петербург, Невский",
     price: 8900,
+    oldPrice: 13500,
+    discount: 34,
     rating: 4.6,
     reviews: 312,
     image: "https://cdn.poehali.dev/projects/d3d2ebf7-2b8a-4e72-9821-edc1997dc600/files/db7c4e11-0edf-4d40-99d5-62fa6db3796c.jpg",
@@ -87,6 +93,16 @@ export default function Index() {
             <p className="text-lg text-muted-foreground">
               Тысячи отелей по всему миру. Лучшие цены и удобное бронирование
             </p>
+            <div className="flex items-center justify-center gap-6 flex-wrap">
+              <div className="flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full">
+                <Icon name="TrendingDown" className="h-5 w-5 text-primary" />
+                <span className="font-semibold text-primary">Цены ниже на 30-40%</span>
+              </div>
+              <div className="flex items-center gap-2 bg-accent/10 px-6 py-3 rounded-full">
+                <Icon name="DollarSign" className="h-5 w-5 text-accent" />
+                <span className="font-semibold text-accent">Без скрытых комиссий</span>
+              </div>
+            </div>
 
             <Card className="mt-8">
               <CardContent className="pt-6">
@@ -241,6 +257,14 @@ export default function Index() {
                         </CardContent>
                         <CardFooter className="flex items-center justify-between border-t pt-4">
                           <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-sm text-muted-foreground line-through">
+                                {hotel.oldPrice.toLocaleString()} ₽
+                              </span>
+                              <span className="bg-destructive text-destructive-foreground text-xs font-bold px-2 py-1 rounded">
+                                -{hotel.discount}%
+                              </span>
+                            </div>
                             <div className="text-2xl font-bold text-primary font-heading">
                               {hotel.price.toLocaleString()} ₽
                             </div>
